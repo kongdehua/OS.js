@@ -2,12 +2,9 @@
 .tern-*
 node_modules
 /dist
-
 /src/packages/**/dist
 /src/packages/**/node_modules
-
 *.txt
-
 /package-lock.json
 /packages.json
 /sessions
