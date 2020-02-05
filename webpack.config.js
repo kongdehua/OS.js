@@ -30,6 +30,11 @@ module.exports = {
     maxEntrypointSize: 500 * 1024,
     maxAssetSize: 500 * 1024
   },
+  resolve: {
+    alias: {
+      "@" : path.resolve(__dirname)
+    }
+  },
   optimization: {
     minimize,
     splitChunks: {

@@ -65,6 +65,7 @@
     "@osjs/settings-application": "^1.1.2",
     "@osjs/standard-theme": "^4.0.6",
     "@osjs/textpad-application": "^1.2.4",
+    "@osjs/widgets": "^3.0.2",
     "hyperapp": "^1.2.10",
     "typeface-roboto": "0.0.75"
   },

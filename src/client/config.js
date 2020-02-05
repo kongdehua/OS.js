@@ -37,8 +37,22 @@
 export default {
   auth: {
     login: {
-      username: 'demo',
-      password: 'demo'
+      username: 'hello',
+      password: 'hello'
+    }
+  },
+  desktop: {
+    settings: {
+    widgets: [
+      { name: 'digitalclock',
+        options: {
+          position: {
+            top: 400,
+            left: 300
+          }
+        }
+      }
+    ]
     }
   }
 };

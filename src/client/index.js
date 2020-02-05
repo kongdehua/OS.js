@@ -46,16 +46,21 @@ import {
   NotificationServiceProvider,
   SettingsServiceProvider,
   AuthServiceProvider
-} from '@osjs/client';
+//} from '@/depends/osjs-client';
+ } from '@osjs/client';
 
-import {PanelServiceProvider} from '@osjs/panels';
 import {GUIServiceProvider} from '@osjs/gui';
 import {DialogServiceProvider} from '@osjs/dialogs';
+import {PanelServiceProvider} from '@osjs/panels';
+import {WidgetServiceProvider} from '@osjs/widgets';
 import config from './config.js';
 import './index.scss';
 
 const init = () => {
   const osjs = new Core(config, {});
+  console.group("init osjs");
+  osjs.logger.warn("osjs", osjs);
+  console.groupEnd();
 
   // Register your service providers
   osjs.register(CoreServiceProvider);
@@ -67,6 +72,8 @@ const init = () => {
   osjs.register(PanelServiceProvider);
   osjs.register(DialogServiceProvider);
   osjs.register(GUIServiceProvider);
+
+  osjs.register(WidgetServiceProvider);
 
   osjs.boot();
 };
