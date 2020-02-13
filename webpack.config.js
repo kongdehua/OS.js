@@ -24,13 +24,14 @@ module.exports = {
   mode,
   devtool: 'source-map',
   entry: {
-    osjs: path.resolve(__dirname, 'src/client/index.js')
+    osjs: path.resolve(__dirname, 'src/client/index.ts')
   },
   performance: {
     maxEntrypointSize: 500 * 1024,
     maxAssetSize: 500 * 1024
   },
   resolve: {
+    extensions: [".ts", ".js", ".png"],
     alias: {
       "@" : path.resolve(__dirname)
     }
@@ -106,6 +107,18 @@ module.exports = {
         use: {
           loader: 'source-map-loader'
         }
+      },
+      {
+        test: /\.ts$/,
+        exclude: /(node_modules|bower_components)/,
+        use:[
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: "tsconfig.client.json"
+            }
+          }
+        ]       
       }
     ]
   }

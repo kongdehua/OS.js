@@ -27,18 +27,55 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
-const path = require('path');
 
 //
-// This is where you can place your custom CLI tasks
-// https://manual.os-js.org/v3/guide/cli/
+// This is the client bootstrapping script.
+// This is where you can register service providers or set up
+// your libraries etc.
+//
+// https://manual.os-js.org/v3/guide/provider/
+// https://manual.os-js.org/v3/install/
 // https://manual.os-js.org/v3/resource/official/
 //
 
-module.exports = {
-  discover: [
-    path.resolve(__dirname, '../../../packages'), // OS.js/src/packages
-    path.resolve(__dirname, '../../../providers') // OS.js/src/packages
-  ],
-  tasks: []
+import {
+  Core,
+  CoreServiceProvider,
+  DesktopServiceProvider,
+  VFSServiceProvider,
+  NotificationServiceProvider,
+  SettingsServiceProvider,
+  AuthServiceProvider
+//} from '@/depends/osjs-client';
+ } from '@osjs/client';
+
+import {GUIServiceProvider} from '@osjs/gui';
+import {DialogServiceProvider} from '@osjs/dialogs';
+import {PanelServiceProvider} from '@osjs/panels';
+import {WidgetServiceProvider} from '@osjs/widgets';
+import config from './config';
+import './index.scss';
+
+const init = () => {
+  const osjs = new Core(config, {});
+  console.group("init osjs");
+  osjs.logger.warn("osjs", osjs);
+  console.groupEnd();
+
+  // Register your service providers
+  osjs.register(CoreServiceProvider);
+  osjs.register(DesktopServiceProvider);
+  osjs.register(VFSServiceProvider);
+  osjs.register(NotificationServiceProvider);
+  osjs.register(SettingsServiceProvider, {before: true});
+  osjs.register(AuthServiceProvider, {before: true});
+  osjs.register(PanelServiceProvider);
+  osjs.register(DialogServiceProvider);
+  osjs.register(GUIServiceProvider);
+
+  osjs.register(WidgetServiceProvider);
+
+  osjs.boot();
 };
+
+window.addEventListener('DOMContentLoaded', () => init());

@@ -1,4 +1,4 @@
-/*!
+/*
  * OS.js - JavaScript Cloud/Web Desktop Platform
  *
  * Copyright (c) 2011-2020, Anders Evenrud <andersevenrud@gmail.com>
@@ -29,7 +29,7 @@
  */
 
 //
-// This is the client bootstrapping script.
+// This is the server bootstrapping script.
 // This is where you can register service providers or set up
 // your libraries etc.
 //
@@ -41,41 +41,30 @@
 import {
   Core,
   CoreServiceProvider,
-  DesktopServiceProvider,
+  PackageServiceProvider,
   VFSServiceProvider,
-  NotificationServiceProvider,
-  SettingsServiceProvider,
-  AuthServiceProvider
-//} from '@/depends/osjs-client';
- } from '@osjs/client';
+  AuthServiceProvider,
+  SettingsServiceProvider
+} from '@osjs/server';
 
-import {GUIServiceProvider} from '@osjs/gui';
-import {DialogServiceProvider} from '@osjs/dialogs';
-import {PanelServiceProvider} from '@osjs/panels';
-import {WidgetServiceProvider} from '@osjs/widgets';
-import config from './config.js';
-import './index.scss';
+import config from './config';
+// const config = require('./config.js');
+const osjs = new Core(config, {});
 
-const init = () => {
-  const osjs = new Core(config, {});
-  console.group("init osjs");
-  osjs.logger.warn("osjs", osjs);
-  console.groupEnd();
+osjs.register(CoreServiceProvider, {before: true});
+osjs.register(PackageServiceProvider);
+osjs.register(VFSServiceProvider);
+osjs.register(AuthServiceProvider);
+osjs.register(SettingsServiceProvider);
 
-  // Register your service providers
-  osjs.register(CoreServiceProvider);
-  osjs.register(DesktopServiceProvider);
-  osjs.register(VFSServiceProvider);
-  osjs.register(NotificationServiceProvider);
-  osjs.register(SettingsServiceProvider, {before: true});
-  osjs.register(AuthServiceProvider, {before: true});
-  osjs.register(PanelServiceProvider);
-  osjs.register(DialogServiceProvider);
-  osjs.register(GUIServiceProvider);
+process.on('SIGTERM', () => osjs.destroy());
+process.on('SIGINT', () => osjs.destroy());
+process.on('exit', () => osjs.destroy());
+process.on('uncaughtException', e => console.error(e));
+process.on('unhandledRejection', e => console.error(e));
 
-  osjs.register(WidgetServiceProvider);
-
-  osjs.boot();
-};
-
-window.addEventListener('DOMContentLoaded', () => init());
+osjs.boot()
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

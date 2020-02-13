@@ -1,6 +1,8 @@
 .swp
 .tern-*
 node_modules
+
+*_bak
 /dist
 /src/packages/**/dist
 /src/packages/**/node_modules
