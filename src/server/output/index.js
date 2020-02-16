@@ -27,7 +27,6 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
-
 //
 // This is the server bootstrapping script.
 // This is where you can register service providers or set up
@@ -37,36 +36,22 @@
 // https://manual.os-js.org/v3/install/
 // https://manual.os-js.org/v3/resource/official/
 //
-//
-console.log("kdh")
-
-import {
-  Core,
-  CoreServiceProvider,
-  PackageServiceProvider,
-  VFSServiceProvider,
-  AuthServiceProvider,
-  SettingsServiceProvider
-} from '@kdh/server';
-
+import { Core, CoreServiceProvider, PackageServiceProvider, VFSServiceProvider, AuthServiceProvider, SettingsServiceProvider } from '@kdh/server';
 import config from './config';
 const osjs = new Core(config, {});
-
-
-osjs.register(CoreServiceProvider, {before: true});
+osjs.register(CoreServiceProvider, { before: true });
 osjs.register(PackageServiceProvider);
 osjs.register(VFSServiceProvider);
 osjs.register(AuthServiceProvider);
 osjs.register(SettingsServiceProvider);
-
 process.on('SIGTERM', () => osjs.destroy());
 process.on('SIGINT', () => osjs.destroy());
 process.on('exit', () => osjs.destroy());
 process.on('uncaughtException', e => console.error(e));
 process.on('unhandledRejection', e => console.error(e));
-
 osjs.boot()
-  .catch(err => {
+    .catch(err => {
     console.error(err);
     process.exit(1);
-  });
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9pbmRleC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQTRCRztBQUVILEVBQUU7QUFDRiwyQ0FBMkM7QUFDM0MsNkRBQTZEO0FBQzdELHNCQUFzQjtBQUN0QixFQUFFO0FBQ0YsOENBQThDO0FBQzlDLHVDQUF1QztBQUN2QyxpREFBaUQ7QUFDakQsRUFBRTtBQUVGLE9BQU8sRUFDTCxJQUFJLEVBQ0osbUJBQW1CLEVBQ25CLHNCQUFzQixFQUN0QixrQkFBa0IsRUFDbEIsbUJBQW1CLEVBQ25CLHVCQUF1QixFQUN4QixNQUFNLGFBQWEsQ0FBQztBQUVyQixPQUFPLE1BQU0sTUFBTSxVQUFVLENBQUM7QUFDOUIsTUFBTSxJQUFJLEdBQUcsSUFBSSxJQUFJLENBQUMsTUFBTSxFQUFFLEVBQUUsQ0FBQyxDQUFDO0FBR2xDLElBQUksQ0FBQyxRQUFRLENBQUMsbUJBQW1CLEVBQUUsRUFBQyxNQUFNLEVBQUUsSUFBSSxFQUFDLENBQUMsQ0FBQztBQUNuRCxJQUFJLENBQUMsUUFBUSxDQUFDLHNCQUFzQixDQUFDLENBQUM7QUFDdEMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxrQkFBa0IsQ0FBQyxDQUFDO0FBQ2xDLElBQUksQ0FBQyxRQUFRLENBQUMsbUJBQW1CLENBQUMsQ0FBQztBQUNuQyxJQUFJLENBQUMsUUFBUSxDQUFDLHVCQUF1QixDQUFDLENBQUM7QUFFdkMsT0FBTyxDQUFDLEVBQUUsQ0FBQyxTQUFTLEVBQUUsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxDQUFDLENBQUM7QUFDNUMsT0FBTyxDQUFDLEVBQUUsQ0FBQyxRQUFRLEVBQUUsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxDQUFDLENBQUM7QUFDM0MsT0FBTyxDQUFDLEVBQUUsQ0FBQyxNQUFNLEVBQUUsR0FBRyxFQUFFLENBQUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxDQUFDLENBQUM7QUFDekMsT0FBTyxDQUFDLEVBQUUsQ0FBQyxtQkFBbUIsRUFBRSxDQUFDLENBQUMsRUFBRSxDQUFDLE9BQU8sQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQztBQUN2RCxPQUFPLENBQUMsRUFBRSxDQUFDLG9CQUFvQixFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDO0FBRXhELElBQUksQ0FBQyxJQUFJLEVBQUU7S0FDUixLQUFLLENBQUMsR0FBRyxDQUFDLEVBQUU7SUFDWCxPQUFPLENBQUMsS0FBSyxDQUFDLEdBQUcsQ0FBQyxDQUFDO0lBQ25CLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7QUFDbEIsQ0FBQyxDQUFDLENBQUMifQ==

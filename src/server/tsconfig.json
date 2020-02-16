@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "types": [
+    "node",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
+  "exclude": [
+    "../client",
+    "../cli"
+  ],
+  "compilerOptions" : {
+    "noEmit": false,
+    "outDir": "./output",
+    "module": "commonjs"
+  }
+}

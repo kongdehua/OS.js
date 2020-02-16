@@ -29,43 +29,19 @@
  */
 
 //
-// This is the server bootstrapping script.
-// This is where you can register service providers or set up
-// your libraries etc.
-//
-// https://manual.os-js.org/v3/guide/provider/
-// https://manual.os-js.org/v3/install/
-// https://manual.os-js.org/v3/resource/official/
+// This is the server configuration tree.
+// Guide: https://manual.os-js.org/v3/config/#server
+// Complete config tree: https://github.com/os-js/osjs-server/blob/master/src/config.js
 //
 
-const {
-  Core,
-  CoreServiceProvider,
-  PackageServiceProvider,
-  VFSServiceProvider,
-  AuthServiceProvider,
-  SettingsServiceProvider
-} = require('@osjs/server');
+// const path = require('path');
+// const root = path.resolve(__dirname, '../../');
+import path from "path";
 
-const config = require('./config.js');
-const osjs = new Core(config, {});
+const root = path.resolve(__dirname, '../../');
 
-osjs.register(CoreServiceProvider, {before: true});
-osjs.register(PackageServiceProvider);
-osjs.register(VFSServiceProvider);
-osjs.register(AuthServiceProvider);
-osjs.register(SettingsServiceProvider);
-
-process.on('SIGTERM', () => osjs.destroy());
-process.on('SIGINT', () => osjs.destroy());
-process.on('exit', () => osjs.destroy());
-process.on('uncaughtException', e => console.error(e));
-process.on('unhandledRejection', e => console.error(e));
-
-console.log("kdhkdhdkdh");
-
-osjs.boot()
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+export default {
+  root,
+  port: 8000,
+  public: path.resolve(root, 'dist')
+};

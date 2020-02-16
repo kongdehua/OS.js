@@ -47,12 +47,12 @@ import {
   SettingsServiceProvider,
   AuthServiceProvider
 //} from '@/depends/osjs-client';
- } from '@osjs/client';
+ } from '@kdh/client';
 
-import {GUIServiceProvider} from '@osjs/gui';
-import {DialogServiceProvider} from '@osjs/dialogs';
-import {PanelServiceProvider} from '@osjs/panels';
-import {WidgetServiceProvider} from '@osjs/widgets';
+import {GUIServiceProvider} from '@kdh/gui';
+import {DialogServiceProvider} from '@kdh/dialogs';
+import {PanelServiceProvider} from '@kdh/panels';
+import {WidgetServiceProvider} from '@kdh/widgets';
 import config from './config';
 import './index.scss';
 

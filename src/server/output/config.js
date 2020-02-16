@@ -27,18 +27,18 @@
  * @author  Anders Evenrud <andersevenrud@gmail.com>
  * @licence Simplified BSD License
  */
-
 //
 // This is the server configuration tree.
 // Guide: https://manual.os-js.org/v3/config/#server
 // Complete config tree: https://github.com/os-js/osjs-server/blob/master/src/config.js
 //
-
-const path = require('path');
+// const path = require('path');
+// const root = path.resolve(__dirname, '../../');
+import path from "path";
 const root = path.resolve(__dirname, '../../');
-
-module.exports = {
-  root,
-  port: 8000,
-  public: path.resolve(root, 'dist')
+export default {
+    root,
+    port: 8000,
+    public: path.resolve(root, 'dist')
 };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uZmlnLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vY29uZmlnLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBNEJHO0FBRUgsRUFBRTtBQUNGLHlDQUF5QztBQUN6QyxvREFBb0Q7QUFDcEQsdUZBQXVGO0FBQ3ZGLEVBQUU7QUFFRixnQ0FBZ0M7QUFDaEMsa0RBQWtEO0FBQ2xELE9BQU8sSUFBSSxNQUFNLE1BQU0sQ0FBQztBQUV4QixNQUFNLElBQUksR0FBRyxJQUFJLENBQUMsT0FBTyxDQUFDLFNBQVMsRUFBRSxRQUFRLENBQUMsQ0FBQztBQUUvQyxlQUFlO0lBQ2IsSUFBSTtJQUNKLElBQUksRUFBRSxJQUFJO0lBQ1YsTUFBTSxFQUFFLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxFQUFFLE1BQU0sQ0FBQztDQUNuQyxDQUFDIn0=
