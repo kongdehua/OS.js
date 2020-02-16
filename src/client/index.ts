@@ -59,7 +59,7 @@ import './index.scss';
 const init = () => {
   const osjs = new Core(config, {});
   console.group("init osjs");
-  osjs.logger.warn("osjs", osjs);
+  // osjs.logger.warn("osjs", osjs);
   console.groupEnd();
 
   // Register your service providers

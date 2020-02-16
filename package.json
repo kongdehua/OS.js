@@ -57,11 +57,11 @@
   },
   "dependencies": {
     "@kdh/cli": "^3.0.28",
-    "@kdh/client": "^3.1.22",
+    "@kdh/client": "^3.1.23",
     "@kdh/common": "^3.0.6",
     "@kdh/dialogs": "^3.0.18",
     "@kdh/gui": "^4.0.29",
-    "@kdh/panels": "^3.0.20",
+    "@kdh/panels": "^3.0.22",
     "@kdh/server": "^3.0.58",
     "@kdh/widgets": "^3.0.4",
     "@osjs/calculator-application": "^1.2.4",
