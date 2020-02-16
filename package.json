@@ -9,6 +9,7 @@
     "stylelint": "stylelint 'src/client/*.scss'",
     "serve": "tsc -p ./src/server/tsconfig.json",
     "server": "ts-node-dev src/server/index.ts",
+    "dev": "npm run build && npm run package:discover && npm run server",
     "build:serve": "ts-node src/server/index.ts",
     "build:manifest": "kdh-cli package:discover",
     "package:discover": "kdh-cli package:discover",
