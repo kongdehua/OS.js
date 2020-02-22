@@ -7,9 +7,12 @@
     "test": "npm run eslint && npm run stylelint",
     "eslint": "eslint 'src/client/**/*.js' 'src/server/**/*.js'",
     "stylelint": "stylelint 'src/client/*.scss'",
+    "build:client": "webpack --config ./webpack.config.js --progress",
+    "build:server": "webpack --config ./webpack-server.config.js --progress",
+    "watch": "webpack --watch",
     "serve": "tsc -p ./src/server/tsconfig.json",
     "server": "ts-node-dev src/server/index.ts",
-    "dev": "npm run build && npm run package:discover && npm run server",
+    "dev": "npm run build:client && npm run package:discover && npm run server",
     "build:serve": "ts-node src/server/index.ts",
     "build:manifest": "kdh-cli package:discover",
     "package:discover": "kdh-cli package:discover",
@@ -21,9 +24,7 @@
     "make:originApp": "kdh-cli make:vueapplication",
     "make:application": "kdh-cli make:application",
     "make:iframe-application": "kdh-cli make:iframe-application",
-    "make:provider": "kdh-cli make:provider",
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "make:provider": "kdh-cli make:provider"
   },
   "keywords": [
     "osjs"

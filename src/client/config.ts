@@ -37,8 +37,8 @@
 export default {
   auth: {
     login: {
-      username: 'hello',
-      password: 'hello'
+      username: 'demo',
+      password: 'demo'
     }
   },
   desktop: {

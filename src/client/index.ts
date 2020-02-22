@@ -49,12 +49,16 @@ import {
 //} from '@/depends/osjs-client';
  } from '@kdh/client';
 
+import Common from '@kdh/common';
 import {GUIServiceProvider} from '@kdh/gui';
 import {DialogServiceProvider} from '@kdh/dialogs';
 import {PanelServiceProvider} from '@kdh/panels';
+import {DockContainerServiceProvider} from '@kdh/dockcontainer';
 import {WidgetServiceProvider} from '@kdh/widgets';
 import config from './config';
 import './index.scss';
+
+Common;
 
 const init = () => {
   const osjs = new Core(config, {});
@@ -70,6 +74,7 @@ const init = () => {
   osjs.register(SettingsServiceProvider, {before: true});
   osjs.register(AuthServiceProvider, {before: true});
   osjs.register(PanelServiceProvider);
+  osjs.register(DockContainerServiceProvider);
   osjs.register(DialogServiceProvider);
   osjs.register(GUIServiceProvider);
 

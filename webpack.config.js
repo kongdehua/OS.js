@@ -39,7 +39,7 @@ module.exports = {
   optimization: {
     minimize,
     splitChunks: {
-      chunks: 'all'
+      chunks: 'initial'
     }
   },
   plugins: [
@@ -115,7 +115,7 @@ module.exports = {
           {
             loader: 'ts-loader',
             options: {
-              configFile: "tsconfig.client.json"
+              configFile: path.resolve(__dirname, "./tsconfig-client.json")
             }
           }
         ]       
